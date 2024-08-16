@@ -8,9 +8,9 @@ import { SearchBar } from "./components/SearchBar";
 export default function App() {
   return (
     <>
-      {/* <AppBar /> */}
+      <AppBar />
       {/* <VideoGrid /> */}
-      <SearchBar />
+      {/* <SearchBar /> */}
     </>
   )
 }
