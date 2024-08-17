@@ -1,16 +1,16 @@
-import { VideoCard } from "./components/VideoCard";
-import videoImg from '../public/videoComponentImg.webp';
-import profileImg from '../public/profilePhoto.jpg';
-import { VideoGrid } from "./components/VideoGrid";
-import { AppBar } from "./components/AppBar";
-import { SearchBar } from "./components/SearchBar";
+import { VideoGrid } from "./components/video display/VideoGrid";
+import { AppBar } from "./components/app bar/AppBar";
+import { SideBar } from "./components/side bar/SideBar";
+import { SideBarContainer } from "./components/side bar/SideBarContainer";
 
 export default function App() {
   return (
     <>
-      <AppBar />
+      {/* <AppBar /> */}
       {/* <VideoGrid /> */}
       {/* <SearchBar /> */}
+      {/* <SideBar /> */}
+      <SideBar />
     </>
   )
 }

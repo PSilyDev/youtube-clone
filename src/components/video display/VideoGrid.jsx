@@ -1,5 +1,5 @@
 import { VideoCard } from "./VideoCard"
-import { VIDEOS } from "../../public/videoData"
+import { VIDEOS } from "../../../public/videoData"
 
 export const VideoGrid = () => {
 
