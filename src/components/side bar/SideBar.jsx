@@ -5,9 +5,15 @@ export const SideBar = () => {
 
     return(
         <div className="flex flex-col">
-            <div className=""><SideBarContainer icon={HOME.icon} text={HOME.name} /></div>
-            <div className=""><SideBarContainer icon={SHORTS.icon} text={SHORTS.name} /></div>
-            <div className=""><SideBarContainer icon={SUBSCRIPTION.icon} text={SUBSCRIPTION.name} /></div>
+            <button>
+                <SideBarContainer icon={HOME.icon} text={HOME.name} />
+            </button>
+            <button>
+                <SideBarContainer icon={SHORTS.icon} text={SHORTS.name} />
+            </button>
+            <button>
+                <SideBarContainer icon={SUBSCRIPTION.icon} text={SUBSCRIPTION.name} />
+            </button>
         </div>
     )
 }
