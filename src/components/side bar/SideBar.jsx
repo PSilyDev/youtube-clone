@@ -1,5 +1,5 @@
 import { SideBarContainer } from "./SideBarContainer"
-import { HOME, SHORTS, SUBSCRIPTION, HISTORY, PLAYLISTS, WATCHLATER, LIKEDVIDEOS } from "./icons.jsx"
+import { HOME, SHORTS, SUBSCRIPTION, HISTORY, PLAYLISTS, WATCHLATER, LIKEDVIDEOS, SETTINGS, REPORTHISTORY, HELP, SENDFEEDBACK } from "./icons.jsx"
 
 export const SideBar = () => {
 
@@ -35,6 +35,23 @@ export const SideBar = () => {
             </button>
             <button>
                 <SideBarContainer icon={LIKEDVIDEOS.icon} text={LIKEDVIDEOS.name} />
+            </button>
+        
+
+            <hr className="self-center w-11/12 border-t border-gray-300 my-6" />
+
+            {/* settings */}
+            <button>
+                <SideBarContainer icon={SETTINGS.icon} text={SETTINGS.name} />
+            </button>
+            <button>
+                <SideBarContainer icon={REPORTHISTORY.icon} text={REPORTHISTORY.name} />
+            </button>
+            <button>
+                <SideBarContainer icon={HELP.icon} text={HELP.name} />
+            </button>
+            <button>
+                <SideBarContainer icon={SENDFEEDBACK.icon} text={SENDFEEDBACK.name} />
             </button>
         </div>
     )
