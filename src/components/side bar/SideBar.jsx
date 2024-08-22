@@ -21,7 +21,7 @@ export const SideBar = () => {
             {/* you tiles */}
             <button>
                 <div className= "mt-5 flex justify-start items-center h-20 rounded-3xl hover:bg-gray-200">
-                    <div className="font-semibold text-2xl ml-10">You ></div>
+                    <div className="font-semibold text-2xl ml-10">You &#62;</div>
                 </div>
             </button>
             <button>
