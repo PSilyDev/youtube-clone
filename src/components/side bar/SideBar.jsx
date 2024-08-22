@@ -16,12 +16,12 @@ export const SideBar = () => {
                 <SideBarContainer icon={SUBSCRIPTION.icon} text={SUBSCRIPTION.name} />
             </button>
             
-            <hr className="self-center w-11/12 border-t border-gray-300 mt-6" />
+            <hr className="self-center w-11/12 border-t border-gray-300 mt-4" />
 
             {/* you tiles */}
             <button>
-                <div className= "mt-5 flex justify-start items-center h-20 rounded-3xl hover:bg-gray-200">
-                    <div className="font-semibold text-2xl ml-10">You &#62;</div>
+                <div className= "mt-2 mx-3 flex justify-start items-center h-11 rounded-xl hover:bg-gray-200">
+                    <div className="font-semi text-lg ml-5">You &#62;</div>
                 </div>
             </button>
             <button>
@@ -38,7 +38,7 @@ export const SideBar = () => {
             </button>
         
 
-            <hr className="self-center w-11/12 border-t border-gray-300 my-6" />
+            <hr className="self-center w-11/12 border-t border-gray-300 my-4" />
 
             {/* settings */}
             <button>
