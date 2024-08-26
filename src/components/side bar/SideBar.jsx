@@ -4,7 +4,7 @@ import { HOME, SHORTS, SUBSCRIPTION, HISTORY, PLAYLISTS, WATCHLATER, LIKEDVIDEOS
 export const SideBar = () => {
 
     return(
-        <div className="flex flex-col">            
+        <div className="flex flex-col pt-8">            
             {/* main tiles */}
             <button>
                 <SideBarContainer icon={HOME.icon} text={HOME.name} />
