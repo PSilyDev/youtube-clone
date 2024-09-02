@@ -1,5 +1,4 @@
 export const SideBarContainer = ({icon, text, open}) => {
-    console.log('open - ', open);
     return(
         <div className= {`relative flex items-center h-11 rounded-xl hover:bg-gray-200 mx-3 mt-2 ${open ? "justify-start" : "justify-center"} group`}>
             <div className={`flex items-center rounded-full h-8 w-8 p-1`}>{icon}</div>
