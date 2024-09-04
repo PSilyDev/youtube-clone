@@ -1,6 +1,6 @@
 export const SideBarContainer = ({icon, text, open}) => {
     return(
-        <div className= {`relative flex items-center mx-3 ${open ? "justify-start h-12 mt-1" : "flex-col justify-center h-20 w-20 mx-0"} group`}>
+        <div className= {`relative flex items-center ${open ? "justify-start h-12 mt-1 ml-3" : "flex-col justify-center h-20 w-20"} group`}>
             {/* icon */}
             <div className={`flex items-center rounded-full h-8 w-8 p-1`}>{icon}</div>
             {/* text */}
