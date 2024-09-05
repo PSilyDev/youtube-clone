@@ -2,13 +2,16 @@ import { SearchBar } from "./SearchBar";
 import Avatar from "react-avatar";
 
 
-export const AppBar = () => {
+export const AppBar = ({ open, setOpen }) => {
 
     return(
         <div className="flex justify-between mt-2">
-            <div className="bg-red-400 flex items-center w-3/12">
-                <button className="mx-5"><svg className="w-8 h-8 p-2 hover:bg-gray-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#000000" d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg></button>
-                Youtube
+            <div className="flex items-center w-3/12">
+                {/* sidebar button */}
+                <button className="ml-5 bg-white rounded-full" onClick={() => setOpen(!open)}>
+                    <svg className="w-10 h-10 p-2 hover:bg-gray-200 hover:rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#000000" d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
+                </button>
+                <div className="ml-4">YouTube</div>
             </div>
             <div className="w-6/12">
                 <SearchBar />
