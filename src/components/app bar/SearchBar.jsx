@@ -5,7 +5,7 @@ export const SearchBar = () => {
     return(
         <div>
             <form>
-                <div className="bg-green-400 flex justify-between">
+                <div className="flex justify-between">
                     <div className="flex w-full">
                     <input 
                         type="text" 
