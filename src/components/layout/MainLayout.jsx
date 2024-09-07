@@ -1,7 +1,7 @@
 import { AppBar } from "../app bar/AppBar"
 import { SideBar } from "../side bar/SideBar"
 import { useState } from "react";
-import { VideoGrid } from "../video display/VideoGrid";
+import { MainVideoGrid } from "./MainVideoGrid";
 
 export const MainLayout = () => {
     const [open, setOpen] = useState(false);
@@ -15,7 +15,7 @@ export const MainLayout = () => {
                     <SideBar open={open} />
                 </div>
                 {/* Main Layout */}
-                <div className="w-screen"><VideoGrid /></div>
+                <div className="w-screen"><MainVideoGrid /></div>
             </div>
         </div>
     )

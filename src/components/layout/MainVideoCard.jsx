@@ -1,4 +1,4 @@
-export function VideoCard({videoImg, profileImg, title, author, views, timestamp}) {
+export function MainVideoCard({videoImg, profileImg, title, author, views, timestamp}) {
     return(
         <div className="m-3">
             <img src={videoImg} className="rounded-xl"></img>
