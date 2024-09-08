@@ -44,11 +44,11 @@ export const CategoriesBar = () => {
     }
 
     return(
-        <div className="bg-red-400 flex flex-nowrap justify-start items-center h-12 w-max">
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-white rounded-lg shadow-inner bg-red-400 flex flex-nowrap justify-start items-center h-12 w-max">
             {
                 categories.map((value, index) => {
                     return (
-                        <span key={index} className={`flex items-center bg-green-400 h-8 mx-2 px-3 rounded-lg cursor-pointer ${activeCategory === value.id ? "bg-black text-white" : "hover:bg-gray-200"} active:bg-violet-700`} onClick={() => handleClick(value.id)}>{value.name}</span>
+                        <span key={index} className={`flex items-center h-8 mx-2 px-3 rounded-lg cursor-pointer ${activeCategory === value.id ? "bg-black text-white" : "bg-green-400 hover:bg-gray-200"}`} onClick={() => handleClick(value.id)}>{value.name}</span>
                     )
                 })
             }
