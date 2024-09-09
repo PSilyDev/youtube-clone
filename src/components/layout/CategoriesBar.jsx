@@ -44,14 +44,18 @@ export const CategoriesBar = () => {
     }
 
     return(
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-white rounded-lg shadow-inner bg-red-400 flex flex-nowrap justify-start items-center h-12 w-max">
+        <div className="relative flex flex-nowrap justify-start items-center h-12 w-max">
             {
                 categories.map((value, index) => {
                     return (
-                        <span key={index} className={`flex items-center h-8 mx-2 px-3 rounded-lg cursor-pointer ${activeCategory === value.id ? "bg-black text-white" : "bg-green-400 hover:bg-gray-200"}`} onClick={() => handleClick(value.id)}>{value.name}</span>
+                        <span key={index} className={`flex items-center h-8 mx-2 px-3 rounded-lg cursor-pointer ${activeCategory === value.id ? "bg-black text-white" : " hover:bg-gray-200"}`} onClick={() => handleClick(value.id)}>{value.name}</span>
+                        
                     )
                 })
             }
+            <div className="absolute inset-x-1/2 transform -translate-x-16 w-20 h-8 flex items-center justify-center z-10 rounded-full backdrop-blur">
+                <svg className="w-8 h-8 shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#b9bcc0" d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM241 377c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l87-87-87-87c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L345 239c9.4 9.4 9.4 24.6 0 33.9L241 377z"/></svg>
+            </div>
         </div>
     )
 }
