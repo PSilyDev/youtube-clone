@@ -43,6 +43,10 @@ export const CategoriesBar = () => {
         setActiveCategory(id);
     }
 
+    const handleScroll = () => {
+        console.log('next clicked');
+    }
+
     return(
         <div className="relative flex flex-nowrap justify-start items-center h-12 w-max">
             {
@@ -53,9 +57,9 @@ export const CategoriesBar = () => {
                     )
                 })
             }
-            <div className="absolute inset-x-1/2 transform -translate-x-16 w-20 h-8 flex items-center justify-center z-10 rounded-full backdrop-blur">
+            <button className="absolute inset-x-1/2 transform -translate-x-16 w-20 h-8 flex items-center justify-center z-10 rounded-full backdrop-blur" onClick={handleScroll}>
                 <svg className="w-8 h-8 shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#b9bcc0" d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM241 377c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l87-87-87-87c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L345 239c9.4 9.4 9.4 24.6 0 33.9L241 377z"/></svg>
-            </div>
+            </button>
         </div>
     )
 }
