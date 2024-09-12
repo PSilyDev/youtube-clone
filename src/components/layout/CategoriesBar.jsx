@@ -48,21 +48,34 @@ export const CategoriesBar = () => {
     }
 
     return(
-        <div className="relative flex flex-nowrap justify-start items-center h-12 w-max">
-            <button className="absolute inset-x-1/2 transform w-20 h-8 flex items-center justify-center z-10 rounded-full backdrop-blur">
-                <svg className="w-8 h-8 shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#403f3f" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
-            </button>
+        // <div className="relative flex flex-nowrap justify-start items-center h-12 w-max">
+        //     <button className="absolute inset-x-1/2 transform w-20 h-8 flex items-center justify-center z-10 rounded-full backdrop-blur">
+        //         <svg className="w-8 h-8 shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#403f3f" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
+        //     </button>
+        //     {
+        //         categories.map((value, index) => {
+        //             return (
+        //                 <span key={index} className={`flex items-center h-8 mx-2 px-3 rounded-lg cursor-pointer ${activeCategory === value.id ? "bg-black text-white" : " hover:bg-gray-200"}`} onClick={() => handleClick(value.id)}>{value.name}</span>
+                        
+        //             )
+        //         })
+        //     }
+        //     <button className="absolute inset-x-1/2 transform -translate-x-16 w-20 h-8 flex items-center justify-center z-10 rounded-full backdrop-blur" onClick={handleScroll}>
+        //         <svg className="w-8 h-8 shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#403f3f" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+        //     </button>
+        // </div>
+        <div className="flex justify-center items-center bg-red-400 cursor-pointer m-16 rounded-md h-12 px-3 w-max">
+            <svg className="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#403f3f" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
+            <div className="flex flex-nowrap justify-start items-center">
             {
                 categories.map((value, index) => {
                     return (
-                        <span key={index} className={`flex items-center h-8 mx-2 px-3 rounded-lg cursor-pointer ${activeCategory === value.id ? "bg-black text-white" : " hover:bg-gray-200"}`} onClick={() => handleClick(value.id)}>{value.name}</span>
-                        
+                        <span key={index} className={`flex items-center font-sans mx-1 h-8 px-3 rounded-lg cursor-pointer ${activeCategory === value.id ? "bg-black text-white" : " hover:bg-gray-200"}`} onClick={() => handleClick(value.id)}>{value.name}</span>
                     )
                 })
             }
-            <button className="absolute inset-x-1/2 transform -translate-x-16 w-20 h-8 flex items-center justify-center z-10 rounded-full backdrop-blur" onClick={handleScroll}>
-                <svg className="w-8 h-8 shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#403f3f" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
-            </button>
+            </div>
+            <svg className="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#403f3f" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
         </div>
     )
 }
