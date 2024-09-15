@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const categories = [
     { id: 1, name: "All" },
@@ -37,10 +37,30 @@ const categories = [
 export const CategoriesBar = () => {
 
     const [activeCategory, setActiveCategory] = useState(1);
+    const [rightArrowClicked, setRightArrowClicked] = useState(false);
+    const [isAtStart, setIsAtStart] = useState(true);
+
+    const scrollRef = useRef(null);
 
     const handleClick = (id) => {
         console.log('id - ', id);
         setActiveCategory(id);
+    }
+
+    const handleRightArrowClicked = () => {
+        setRightArrowClicked(true);
+        if(scrollRef.current) {
+            scrollRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+        }
+    }
+
+    const handleLeftArrowClicked = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollBy({
+              left: -200, 
+              behavior: "smooth",
+            });
+          }
     }
 
     const handleScroll = () => {
@@ -64,22 +84,34 @@ export const CategoriesBar = () => {
         //         <svg className="w-8 h-8 shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#403f3f" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
         //     </button>
         // </div>
-        <div className="bg-red-400 relative flex flex-nowrap justify-start items-center cursor-pointer m-16 rounded-md h-max p-2 max-w-screen-sm overflow-x-scroll no-scrollbar">
-            <div className="bg-gradient-to-l from-transparent to-white flex items-center absolute h-full w-24 top-0 left-0">
-                <svg className="w-10 h-10 hover:bg-gray-200 rounded-full py-3 z-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#403f3f" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
+        <div className="relative flex justify-start items-center cursor-pointer m-16 rounded-md h-max p-2 max-w-screen-sm">
+            {/* <!-- Left arrow --> */}
+            <div className={`absolute bg-gradient-to-l from-transparent via-white to-white flex items-center absolute h-full w-24 px-3 top-0 left-0 ${rightArrowClicked ? "flex" : "hidden"} z-20`}>
+                <svg className="w-10 h-10 hover:bg-gray-200 rounded-full py-3 z-10" onClick={handleLeftArrowClicked} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                    <path fill="#403f3f" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
+                </svg>
             </div>
-            <div className="relative flex justify-start items-center ml-1">
-            {
-                categories.map((value, index) => {
-                    return (
-                        <span key={index} className={`flex items-center font-sans h-8 w-max mx-1 px-3 rounded-lg cursor-pointer ${activeCategory === value.id ? "bg-black text-white" : " hover:bg-gray-200"}`} onClick={() => handleClick(value.id)}>{value.name}</span>
-                    )
-                })
-            }
+
+            {/* <!-- Scrollable content --> */}
+            <div ref={scrollRef} className="flex justify-start items-center ml-1 overflow-x-scroll no-scrollbar w-full">
+                {
+                    categories.map((value, index) => {
+                        return (
+                            <span key={index} className={`flex items-center font-sans h-8 min-w-max w-max mx-1 px-3 rounded-lg cursor-pointer ${activeCategory === value.id ? "bg-black text-white" : "hover:bg-gray-200"}`} onClick={() => handleClick(value.id)}>
+                                {value.name}
+                            </span>
+                        )
+                    })
+                }
             </div>
-            <div className="bg-gradient-to-r from-transparent to-white flex justify-end items-center absolute h-full w-24 right-0 px-3">
-                <svg className="w-10 h-10 hover:bg-gray-200 rounded-full py-3 z-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#403f3f" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+
+            {/* <!-- Right arrow --> */}
+            <div className="absolute bg-gradient-to-r from-transparent via-white to-white flex justify-end items-center absolute h-full w-24 right-0 px-3 z-20">
+                <svg className="w-10 h-10 hover:bg-gray-200 rounded-full py-3 z-10" onClick={handleRightArrowClicked} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                    <path fill="#403f3f" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
+                </svg>
             </div>
         </div>
+
     )
 }
