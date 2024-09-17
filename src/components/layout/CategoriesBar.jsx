@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const categories = [
     { id: 1, name: "All" },
@@ -63,9 +63,21 @@ export const CategoriesBar = () => {
           }
     }
 
-    const handleScroll = () => {
-        console.log('next clicked');
-    }
+    const checkScrollPosition = () => {
+        if (scrollRef.current) {
+            setIsAtStart(scrollRef.current.scrollLeft === 0);
+        }
+    };
+
+    useEffect(() => {
+        const container = scrollRef.current;
+
+        container.addEventListener("scroll", checkScrollPosition);
+
+        return () => {
+            container.removeEventListener("scroll", checkScrollPosition);
+        }
+    }, []);
 
     return(
         // <div className="relative flex flex-nowrap justify-start items-center h-12 w-max">
@@ -86,11 +98,13 @@ export const CategoriesBar = () => {
         // </div>
         <div className="relative flex justify-start items-center cursor-pointer m-16 rounded-md h-max p-2 max-w-screen-sm">
             {/* <!-- Left arrow --> */}
-            <div className={`absolute bg-gradient-to-l from-transparent via-white to-white flex items-center absolute h-full w-24 px-3 top-0 left-0 ${rightArrowClicked ? "flex" : "hidden"} z-20`}>
+            {!isAtStart && (
+            <div className={`absolute bg-gradient-to-l from-transparent via-white to-white flex items-center absolute h-full w-24 px-3 top-0 left-0 z-20`}>
                 <svg className="w-10 h-10 hover:bg-gray-200 rounded-full py-3 z-10" onClick={handleLeftArrowClicked} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path fill="#403f3f" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
                 </svg>
             </div>
+            )}
 
             {/* <!-- Scrollable content --> */}
             <div ref={scrollRef} className="flex justify-start items-center ml-1 overflow-x-scroll no-scrollbar w-full">
