@@ -2,6 +2,7 @@ import { AppBar } from "../app bar/AppBar"
 import { SideBar } from "../side bar/SideBar"
 import { useState } from "react";
 import { MainVideoGrid } from "./MainVideoGrid";
+import { CategoriesBar } from "./CategoriesBar";
 
 export const MainLayout = () => {
     const [open, setOpen] = useState(false);
@@ -15,7 +16,10 @@ export const MainLayout = () => {
                     <SideBar open={open} />
                 </div>
                 {/* Main Layout */}
-                <div className="w-screen"><MainVideoGrid /></div>
+                <div className="flex flex-col w-screen">
+                    <div className="border-8"><CategoriesBar /></div>
+                    <div className=""><MainVideoGrid /></div>
+                </div>
             </div>
         </div>
     )
