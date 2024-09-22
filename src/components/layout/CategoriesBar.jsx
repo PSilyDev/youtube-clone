@@ -96,7 +96,8 @@ export const CategoriesBar = () => {
         //         <svg className="w-8 h-8 shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#403f3f" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
         //     </button>
         // </div>
-        <div className="bg-red-400 absolute flex justify-between items-center cursor-pointer rounded-md h-12 p-2 flex-grow flex-shrink-0">
+        <div className="flex-grow relative">
+        <div className="absolute flex justify-between items-center cursor-pointer rounded-md h-12 p-2 w-full">
             {/* <!-- Left arrow --> */}
             {!isAtStart && (
             <div className={`absolute bg-gradient-to-l from-transparent via-white to-white flex items-center absolute h-full w-24 px-3 top-0 left-0 z-20`}>
@@ -126,6 +127,6 @@ export const CategoriesBar = () => {
                 </svg>
             </div>
         </div>
-
+        </div>
     )
 }

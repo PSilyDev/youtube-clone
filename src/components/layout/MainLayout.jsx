@@ -23,15 +23,22 @@ export const MainLayout = () => {
         //     </div>
         // </div>
         <div className="flex flex-col h-screen">
-            <div className="bg-red-400 h-16"><AppBar open={open} setOpen={setOpen} /></div>
-            <div className="bg-green-400 flex-grow">
+            <div className="h-16 pb-2"><AppBar open={open} setOpen={setOpen} /></div>
+            <div className="flex-grow">
                 <div className="flex flex-row h-full">
-                    <div className={`bg-yellow-400 ${open ? "w-64" : "w-20"}`}>col1</div>
+                    <div className={`${open ? "w-64" : "w-20"}`}> {/* Col1 for SideBar */}
+                        <SideBar open={open} />
+                    </div>
                         <div className="flex flex-col w-full">
-                            <div className="h-12"> {/* Row1 container for CategoriesBar */}
-                                <CategoriesBar />
+                            <div className="h-12 flex w-full"> {/* Row1 container for CategoriesBar */}
+                                <div className="flex w-full"><CategoriesBar /></div>
+                                {/* <CategoriesBar /> */}
                             </div>
-                        <div className="bg-gray-400 flex-grow">row2</div>
+                        <div className="flex-grow"> {/* Row2 container for MainVideoGrid */}
+                            <div className="flex w-full">
+                                <MainVideoGrid />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
