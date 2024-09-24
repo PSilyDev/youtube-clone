@@ -4,7 +4,7 @@ import { useState } from "react";
 import { MainVideoGrid } from "./MainVideoGrid";
 import { CategoriesBar } from "./CategoriesBar";
 
-export const MainLayout = () => {
+export const MainLayout = ({children}) => {
     const [open, setOpen] = useState(true);
 
     return(
@@ -36,7 +36,8 @@ export const MainLayout = () => {
                             </div>
                         <div className="flex-grow"> {/* Row2 container for MainVideoGrid */}
                             <div className="flex w-full">
-                                <MainVideoGrid />
+                                {/* <MainVideoGrid /> */}
+                                {children}
                             </div>
                         </div>
                     </div>
