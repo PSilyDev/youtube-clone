@@ -1,6 +1,6 @@
 import { CategoriesBar } from "./components/layout/CategoriesBar";
 import { MainLayout } from "./components/layout/MainLayout";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { MainVideoGrid } from "./components/layout/MainVideoGrid";
 
 export default function App() {
@@ -31,7 +31,13 @@ export default function App() {
                 </MainLayout>
               }
       />
-      
+
+      <Route  path="*"
+              element={
+                <Navigate to="/" replace />
+              }
+      /> {/* Default route to redirect invalid url */}
+
       </Routes>
     </Router>
   )
