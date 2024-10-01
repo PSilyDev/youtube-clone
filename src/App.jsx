@@ -6,6 +6,12 @@ import { useSelector } from "react-redux";
 
 export default function App() {
   const {accessToken, loading} = useSelector(state => state.auth);
+
+  useEffect(() => {
+    if (!loading && !accessToken) {
+      history.pushState('/auth')
+    }
+  }, [accessToken, loading, history]);
   return (
     <Router>
       <Routes>
