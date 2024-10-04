@@ -3,15 +3,18 @@ import { MainLayout } from "./components/layout/MainLayout";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { MainVideoGrid } from "./components/layout/MainVideoGrid";
 import { useSelector } from "react-redux";
+import { LoginScreen } from "./components/LoginScreen";
+import { useEffect } from "react";
 
 export default function App() {
-  const {accessToken, loading} = useSelector(state => state.auth);
+  
+  // const {accessToken, loading} = useSelector(state => state.auth);
 
-  useEffect(() => {
-    if (!loading && !accessToken) {
-      history.pushState('/auth')
-    }
-  }, [accessToken, loading, history]);
+  // useEffect(() => {
+  //   if (!loading && !accessToken) {
+  //     history.pushState('/auth')
+  //   }
+  // }, [accessToken, loading, history]);
   return (
     <Router>
       <Routes>
@@ -27,7 +30,7 @@ export default function App() {
       <Route  path="/auth"
               element={
                 <MainLayout>
-
+                  <LoginScreen />
                 </MainLayout>
               }
       />
