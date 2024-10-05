@@ -6,8 +6,7 @@ import { thunk } from 'redux-thunk';
 
 const initialState = {
     name: "Prakhar",
-    age: "24",
-    type: 'video'
+    
 }
 
 const reducer = (initialState) => initialState;
