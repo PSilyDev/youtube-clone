@@ -7,6 +7,7 @@ export const LoginScreen = () => {
     const dispatch = useDispatch();
 
     const handleLogin = () => {
+        console.log('button clicked');
         dispatch(login());
     }
 
