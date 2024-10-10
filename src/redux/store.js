@@ -18,10 +18,15 @@
 
 // export default store;
 
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './reducers/auth.reducer';
 
-const rootReducer = combineReducers({
-    auth: authReducer,
-})
+const store = configureStore({
+  reducer: {
+    auth: authReducer, // Combining reducers here directly
+  },
+  devTools: process.env.NODE_ENV !== 'production', // Enable Redux DevTools only in development mode
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(), // Default middleware includes redux-thunk
+});
+
+export default store;
