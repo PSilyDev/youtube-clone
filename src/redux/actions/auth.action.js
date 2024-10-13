@@ -1,7 +1,7 @@
 // import firebase from 'firebase/compat/app';
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from '../../firebase'
-import { LOGIN_REQUEST } from "../actionTypes";
+import { LOAD_PROFILE, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS } from "../actionTypes";
 
 // creating an action creator, action creator is a function that creates an action
 export const login = () => async dispatch => {
@@ -19,10 +19,26 @@ export const login = () => async dispatch => {
         const accessToken = res._tokenResponse.idToken;
 
         const profile = {
-            name: res._tokenResponse.displayName;
+            name: res.user.displayName,
+            photoURL: res.user.photoURL,
         }
+
+        dispatch({
+            type: LOGIN_SUCCESS,
+            payload: accessToken,
+        })
+
+        dispatch({
+            type: LOAD_PROFILE,
+            payload: profile,
+        })
     }
-    catch(error){
+    catch(error){       
         console.log('Error during google login : ', error);
+
+        dispatch({
+            type: LOGIN_FAIL,
+            payload: error.message,
+        })
     }
 }
