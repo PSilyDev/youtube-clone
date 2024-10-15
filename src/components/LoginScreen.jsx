@@ -7,7 +7,16 @@ export const LoginScreen = () => {
 
     const dispatch = useDispatch();
 
-y
+    const accessToken = useSelector(state => state.auth.accessToken);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(accessToken){
+            navigate("/"); //navigate to home route
+        }
+
+    }, [accessToken, navigate])
 
     const handleLogin = () => {
         console.log('button clicked');

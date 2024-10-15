@@ -1,29 +1,36 @@
 import { CategoriesBar } from "./components/layout/CategoriesBar";
 import { MainLayout } from "./components/layout/MainLayout";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { MainVideoGrid } from "./components/layout/MainVideoGrid";
 import { useSelector } from "react-redux";
 import { LoginScreen } from "./components/LoginScreen";
 import { useEffect } from "react";
 
-export default function App() {
-  
-  // const {accessToken, loading} = useSelector(state => state.auth);
 
-  // useEffect(() => {
-  //   if (!loading && !accessToken) {
-  //     history.pushState('/auth')
-  //   }
-  // }, [accessToken, loading, history]);
+function ProtectedRoutes({ children }){
+  const navigate = useNavigate();
+  const {accessToken, loading} = useSelector(state => state.auth);
+  
+  useEffect(() => {
+    if (!loading && !accessToken) {
+      navigate('/auth');
+    }
+  }, [accessToken, loading, history]);
+
+  return children;
+}
+export default function App() {  
   return (
     <Router>
       <Routes>
 
       <Route  path="/" 
-              element={     
-                <MainLayout>
-                  <MainVideoGrid />
-                </MainLayout>
+              element={ 
+                <ProtectedRoutes>
+                  <MainLayout>
+                    <MainVideoGrid />
+                  </MainLayout>
+                </ProtectedRoutes>
               } 
       /> {/* Route 1 - Home Screen */} 
 
