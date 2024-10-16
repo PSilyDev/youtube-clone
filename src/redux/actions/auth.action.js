@@ -23,6 +23,10 @@ export const login = () => async dispatch => {
             photoURL: res.user.photoURL,
         }
 
+
+        sessionStorage.setItem("access-token", accessToken);
+        sessionStorage.setItem("user", JSON.stringify(profile));
+
         dispatch({
             type: LOGIN_SUCCESS,
             payload: accessToken,

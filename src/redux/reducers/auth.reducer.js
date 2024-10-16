@@ -1,8 +1,8 @@
 import { LOAD_PROFILE, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS } from "../actionTypes";
 
 const initialState = {
-    accessToken: null,
-    user: null,
+    accessToken: sessionStorage.getItem("access-token")?sessionStorage.getItem("access-token") : null,
+    user: sessionStorage.getItem("user")?sessionStorage.getItem("user") : null,
     loading: false,
 };
 
