@@ -1,7 +1,7 @@
 // import firebase from 'firebase/compat/app';
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from '../../firebase'
-import { LOAD_PROFILE, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS } from "../actionTypes";
+import { LOAD_PROFILE, LOG_OUT, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS } from "../actionTypes";
 
 // creating an action creator, action creator is a function that creates an action
 export const login = () => async dispatch => {
@@ -45,4 +45,15 @@ export const login = () => async dispatch => {
             payload: error.message,
         })
     }
+}
+
+export const logout = () => async dispatch => {
+    await auth.signOut();
+
+    dispatch({
+        type: LOG_OUT,
+    });
+
+    sessionStorage.removeItem("access-token");
+    sessionStorage.removeItem("user");
 }
