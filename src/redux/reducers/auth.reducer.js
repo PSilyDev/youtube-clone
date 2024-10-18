@@ -1,4 +1,4 @@
-import { LOAD_PROFILE, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS } from "../actionTypes";
+import { LOAD_PROFILE, LOG_OUT, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS } from "../actionTypes";
 
 const initialState = {
     accessToken: sessionStorage.getItem("access-token")?sessionStorage.getItem("access-token") : null,
@@ -35,6 +35,13 @@ export const authReducer = (prevState = initialState, action) => {
             return {
                 ...prevState,
                 user: payload,
+            }
+        
+        case LOG_OUT:
+            return {
+                ...prevState,
+                accessToken: null,
+                user: null,
             }
             
         default:

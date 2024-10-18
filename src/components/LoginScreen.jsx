@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../redux/actions/auth.action";
+import { login, logout } from "../redux/actions/auth.action";
 import { useNavigate } from "react-router-dom";
 
 export const LoginScreen = () => {
