@@ -1,7 +1,14 @@
+import { logout } from "../../redux/actions/auth.action.js";
 import { SideBarContainer } from "./SideBarContainer"
-import { HOME, SHORTS, SUBSCRIPTION, HISTORY, PLAYLISTS, WATCHLATER, LIKEDVIDEOS, SETTINGS, REPORTHISTORY, HELP, SENDFEEDBACK, YOU } from "./icons.jsx"
-
+import { HOME, SHORTS, SUBSCRIPTION, HISTORY, PLAYLISTS, WATCHLATER, LIKEDVIDEOS, SETTINGS, REPORTHISTORY, HELP, SENDFEEDBACK, YOU, LOGOUT } from "./icons.jsx"
+import { useDispatch } from "react-redux";
 export const SideBar = ({open}) => { // always pass open as {open} bool and not open(which act as object)
+
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        dispatch(logout());
+    }
 
     return(
         <div className="flex flex-col pt-8">            
@@ -62,6 +69,9 @@ export const SideBar = ({open}) => { // always pass open as {open} bool and not 
                         </button>
                         <button className="hover:bg-gray-200 rounded-xl">
                             <SideBarContainer icon={SENDFEEDBACK.icon} text={SENDFEEDBACK.name} open={open} />
+                        </button>
+                        <button className="hover:bg-gray-200 rounded-xl" onClick={handleLogout}>
+                            <SideBarContainer icon={LOGOUT.icon} text={LOGOUT.name} open={open} />
                         </button>
                     </>
                 )
