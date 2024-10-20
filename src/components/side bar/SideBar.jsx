@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/actions/auth.action.js";
 import { SideBarContainer } from "./SideBarContainer"
 import { HOME, SHORTS, SUBSCRIPTION, HISTORY, PLAYLISTS, WATCHLATER, LIKEDVIDEOS, SETTINGS, REPORTHISTORY, HELP, SENDFEEDBACK, YOU, LOGOUT } from "./icons.jsx"
@@ -6,15 +7,21 @@ export const SideBar = ({open}) => { // always pass open as {open} bool and not 
 
     const dispatch = useDispatch();
 
+    const navigate = useNavigate();
+
     const handleLogout = () => {
         dispatch(logout());
+    }
+
+    const handleHomeClick = () => {
+        navigate("/");
     }
 
     return(
         <div className="flex flex-col pt-8">            
             {/* main tiles */}
             {/* updated */}
-            <button className="hover:bg-gray-200 rounded-xl">
+            <button onClick={handleHomeClick} className="hover:bg-gray-200 rounded-xl">
                 <SideBarContainer icon={HOME.icon} text={HOME.name} open={open} />
             </button>
             <button className="hover:bg-gray-200 rounded-xl">
