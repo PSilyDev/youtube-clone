@@ -1,5 +1,5 @@
 // import firebase from 'firebase/compat/app';
-import { signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from '../../firebase'
 import { LOAD_PROFILE, LOG_OUT, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS } from "../actionTypes";
 
@@ -7,6 +7,10 @@ import { LOAD_PROFILE, LOG_OUT, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS } from 
 export const login = () => async dispatch => {
     console.log('called')
     try{
+        const googleProvider = new GoogleAuthProvider();
+
+        googleProvider.addScope("https://www.googleapis.com/auth/youtube.force-ssl");
+        
         // const provider = new firebase.auth.GoogleAuthProvider();
         dispatch({
             type: LOGIN_REQUEST,
